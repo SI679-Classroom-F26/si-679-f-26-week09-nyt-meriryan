@@ -10,6 +10,11 @@ import { getClientOrigin } from './config.js';
 
 const app = express();
 
+// Is the app up?
+app.get('/health', (_req, res) => {
+  res.json({ ok: true });
+});
+
 app.use(cors({ origin: getClientOrigin() }));
 app.use(express.json());
 app.use('/products', productsRouter);
